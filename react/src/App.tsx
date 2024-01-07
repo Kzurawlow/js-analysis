@@ -1,34 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {useEffect, useState} from 'react'
+import './styles.css'
+import {createClient} from 'pexels';
+import {Image} from "./Image.tsx";
 
 function App() {
   const [count, setCount] = useState(0)
+  const [response, setResponse] = useState<any[] | null>(null);
+  const client = createClient('eqDK60Xl9lzIP4RHt4YCNdwO2mm5RLkFzl1WGyQytonWVWaHOOzdBhfr');
+
+  async function fetchData() {
+    try {
+      const resp = await client.photos.search({query: 'Nature', per_page: 12, page: count})
+      setCount(count + 1)
+      setResponse(resp.photos)
+    } catch (e) {
+      console.log(e)
+
+    }
+
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, []);
+  console.log(response)
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div>
+      <h1 style={{display: "flex", justifyContent: "center"}}>Zdjęcia: </h1>
+      <div className="buttonsContainer">
+        <button onClick={() => setResponse([])}>Wyczyść zdjęcia</button>
+        <button onClick={() => fetchData()}>Załaduj zdjęcia</button>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      <div className="container">
+        {response?.map(image => (<Image key={image.id} image={image}/>))}
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
 

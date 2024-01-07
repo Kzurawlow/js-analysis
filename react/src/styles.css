@@ -1,0 +1,64 @@
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    background-color: #fff;
+    padding: 20px;
+    max-width: 80%;
+    overflow-y: auto;
+    max-height: 80vh;
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    .h3 {
+        padding: 0;
+        margin: 0;
+
+    }
+}
+
+.photoCard {
+    width: 23%;
+    padding: 20px;
+    background-color: #f1f1f1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.photoName {
+    display: flex;
+    justify-content: flex-start;
+    width: 250px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+}
+
+.buttonsContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
