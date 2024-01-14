@@ -1,0 +1,10 @@
+<h1 class="header">Zdjęcia:</h1>
+<div class="buttonsContainer">
+  <button (click)="fetchData()">Załaduj dane</button>
+  <button (click)="clearPhotos()">Wyczyść dane</button>
+</div>
+<div class="container">
+  <div  *ngFor="let photo of photos">
+    <photo [photo]="photo"></photo>
+  </div>
+</div>
