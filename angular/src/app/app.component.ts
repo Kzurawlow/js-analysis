@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
     const client = createClient('eqDK60Xl9lzIP4RHt4YCNdwO2mm5RLkFzl1WGyQytonWVWaHOOzdBhfr');
     const resp = await client.photos.search({query: 'Nature', per_page: 12, page: this.currentPage})
     this.currentPage++;
+    console.log(this.photos)
     // @ts-ignore
     this.photos = resp.photos;
   }

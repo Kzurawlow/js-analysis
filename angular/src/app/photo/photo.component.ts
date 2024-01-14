@@ -8,6 +8,11 @@ import {HttpClient} from "@angular/common/http";
 })
 export class PhotoComponent {
   @Input() photo: any;
+  dialogVisible = false;
 
   constructor(private http: HttpClient) { }
+
+  toggleDialog() {
+    this.dialogVisible = !this.dialogVisible;
+  }
 }

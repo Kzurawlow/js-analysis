@@ -1,6 +1,25 @@
 <div class="photoCard">
     <div class="photoName">{{photo.alt}}</div>
     <img width="250" height="360" [src]="photo.src.original"/>
+    <button type="button" (click)="toggleDialog()">Show photo data</button>
     <div>
     </div>
 </div>
+<div *ngIf="dialogVisible" class="modal">
+    <div class="modalHeader">
+        <h3 class="h3">Szczegóły zdjęcia</h3>
+        <button
+                type="button"
+                (click)="toggleDialog()"
+        >Zamknij
+        </button>
+    </div>
+    <div>{{ 'image author: ' + photo.photographer }}</div>
+    <div>{{ 'image width: ' + photo.width }}</div>
+    <div>{{ 'image height: ' + photo.height }}</div>
+<!--    <div>{{ 'image description: ' + photo.alt }}</div>-->
+    <div>{{ 'photographer account:'}}
+        <a [href]="photo.photographer_url">Link</a>
+    </div>
+</div>
+<div *ngIf="dialogVisible" class="modal-overlay"></div>
